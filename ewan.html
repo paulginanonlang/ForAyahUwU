@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You.</title>
+    <style>
+        body {
+            background-color: black;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 50px auto;
+            overflow: hidden;
+            padding: 10px;
+        }
+        h1 {
+            color: red;
+            font-size: 5vw;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        h2 {
+            color: white;
+            font-size: 4vw;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        p {
+            color: white;
+            font-size: 3vw;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        button {
+            background-color: red;
+            color: white;
+            font-size: 4vw;
+            padding: 10px 20px;
+            border: 3px solid white;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            position: relative;
+            z-index: 10;
+            width: 50%;
+            max-width: 200px;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+        img {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            opacity: 1;
+            animation: flyUp 3s linear forwards;
+        }
+        @keyframes flyUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 7vw; }
+            h2 { font-size: 6vw; }
+            p { font-size: 5vw; }
+            button { font-size: 5vw; padding: 8px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="valentineText">Happy Valentine's Day</h1>
+    <h2 id="nameText">♡ Hidayah Binti Darman ♡</h2>
+    
+    <button onclick="triggerEffects()">Click Me!</button>
+    
+    <img id="myImage" src="C:\Users\windows 10\Desktop\Pao's Files\HTML_TEST\Ayah.jpg" alt="Your Image Here">
+
+    <p id="messageText">Happy Valentine's Day my Aya, I love you so much that I wanna make it special for us.<br>
+    Ever since i met you, I had a crush on you till i also fall in love with you but despite all what we've<br>
+    been through, I still wanna be with you that I can't live without you. Please marry me soon and I will make your<br>
+    life so happy and I'll treat you better than anyone else...</p>
+
+    <script>
+        function triggerEffects() {
+            fadeInImage();
+            fadeInText();
+            createHearts();
+        }
+
+        function fadeInImage() {
+            document.getElementById("myImage").style.opacity = 1;
+        }
+
+        function fadeInText() {
+            document.getElementById("valentineText").style.opacity = 1;
+            document.getElementById("nameText").style.opacity = 1;
+            document.getElementById("messageText").style.opacity = 1;
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart");
+                document.body.appendChild(heart);
+
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.bottom = "0px";
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 3000);
+            }
+        }
+    </script>
+
+</body>
+</html>
